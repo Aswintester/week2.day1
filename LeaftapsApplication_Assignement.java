@@ -100,18 +100,41 @@ public class LeaftapsApplication_Assignement {
 
 		stateDrop.selectByVisibleText("California");
 
+		// Selecting Source from DropDown
+
+		Select sourceDrop = new Select(driver.findElement(By.id("createLeadForm_dataSourceId")));
+
+		sourceDrop.selectByVisibleText("Direct Mail");
+
+		// Selecting Industry from DropDown
+
+		Select industryDrop = new Select(driver.findElement(By.id("createLeadForm_industryEnumId")));
+
+		industryDrop.selectByIndex(7);
+
+		// Selecting Ownership from DropDown
+
+		Select ownerDrop = new Select(driver.findElement(By.id("createLeadForm_ownershipEnumId")));
+
+		ownerDrop.selectByValue("OWN_PARTNERSHIP");
+
+		// Selecting Aff site from MarketingCamp through sendkey
+
+		driver.findElement(By.id("createLeadForm_marketingCampaignId")).sendKeys("Affiliate Sites");
+
 		driver.findElement(By.id("createLeadForm_generalPostalCode")).sendKeys("701");
 
 		driver.findElement(By.id("createLeadForm_generalPostalCodeExt")).sendKeys("636");
 
-		//getting title
-		
+		// getting title
+
 		System.out.println(driver.getTitle());
 
 		String titleName = driver.getTitle();
-	
-		//comparing title
-		if (titleName == "Leaftaps") {
+
+		// comparing title
+		if (titleName.equals("Create Lead | opentaps CRM")) {
+			
 			System.out.println("The tile  Matches");
 
 		} else {
@@ -126,7 +149,7 @@ public class LeaftapsApplication_Assignement {
 
 		Thread.sleep(3000);
 
-		driver.close();
+		//driver.close();
 	}
 
 }
